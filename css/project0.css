@@ -1,0 +1,69 @@
+* {
+  margin: auto;
+  box-sizing: border-box;
+  font-family: fantasy;
+}
+
+.container {
+  max-width: 960px;
+  background-color: #c9c9c9;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+header {
+  padding: 5%;
+}
+
+#entireGame {
+  /* display: table-row;
+  position:center; */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.side {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+
+#game {
+  position: relative;
+  margin: auto;
+  width: 32em;
+  height: 38%;
+  display: table-cell;
+  visibility: hidden;
+  /* transition:  */
+}
+
+
+
+.box {
+  background-color: grey;
+  color: red;
+  font-size: 80px;
+}
+
+.box:hover {
+  background-color: yellow;
+}
+
+td {
+border: 1px solid black;
+height: 100px;
+width: 100px;
+}
+
+#button {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
