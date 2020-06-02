@@ -1,35 +1,53 @@
-$(document).ready(function () {
-
-let $player1 = $('.firstPlayer')
-let $player2 = $('.secondPlayer')
+$(document).ready(function(){
+//
+let playerOne = 'X';
+let playerTwo = '0';
 let cells = [
-  ['1', '2' '3'],
+  ['1', '2', '3'],
   ['4', '5', '6'],
   ['7', '8', '9']
 ];
+let counter = 0;
+let usedCells = [];
 
-$('#button').on('click', function() {
+// THIS FUNCTiON IS FOR THE ANIMATION WHEN GAME STARTS //
+  $('#button').on('click', function() {
     alert('Player 1 to go first');
-    $('#game').css('visibility','visible')
-  })
+    $('.side').css({opacity:1,visibility:'hidden'}).animate({opacity:0.2}, 2000);
+    $('#game').css({opacity:0,visibility:'visible'}).animate({opacity:1.0}, 2000);
+    })
+//
 
-  //player one goes first
-  const player1Choice = function() {
-    for (var i = 0; i < cells.length; i++) {
-      for (var j = 0; j < cells.length; j++) {
-        cells[i][j]
+// THIS IS OFR THE 0 AND X TURNS.
+  $('.box').on('click', function (){
+    let boxId = $(this).attr('id');
+      let token = '';
+      if (counter % 2 === 0) {
+        token = playerOne;
+      } else {
+        token = playerTwo;
       }
-      console.log(cells[i][j]);
-    }
+     if (! usedCells.includes(boxId)) {
+      $(this).append(token);// before appending - chck if in used cells
+      usedCells.push(boxId);
+      $('#button').text('Click Here to Restart');
+      counter ++
   }
+      console.log(usedCells);
+
+    })
+
+
+//
+// const winningVertical
+//
+// const winningHorizontal
+//
+// const winningDiagonal
+
 })
 
-//
-// set the default avatars for both
-// start button work
-// whateer is clicked is what comes up.
-//         every turn = change between players
-//
+
 // check win conditions
 // 3 functions - check horizontal / vertical / diagonal.
 // which will be array in array.

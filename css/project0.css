@@ -18,8 +18,6 @@ header {
 }
 
 #entireGame {
-  /* display: table-row;
-  position:center; */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -32,6 +30,7 @@ header {
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+  visibility: visible;
 }
 
 
@@ -45,12 +44,24 @@ header {
   /* transition:  */
 }
 
+.default {
+  padding: 20px;
+  font-size: 30px;
+}
 
+#game h3 {
+  visibility: visible;
+}
+
+img {
+  height: 100px;
+}
 
 .box {
   background-color: grey;
   color: red;
   font-size: 80px;
+  padding: 0;
 }
 
 .box:hover {
