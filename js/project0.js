@@ -88,7 +88,6 @@ $(document).ready(function() {
   // PRETTY MUCH ENTIRE GAME.
   const imagePicker1 = function() {
     playerOne = this.outerHTML
-    playerOne.css('opacity', 1);
   }
 
   const imagePicker2 = function() {
