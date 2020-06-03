@@ -3,10 +3,10 @@ $(document).ready(function(){
 let playerOne = 'X';
 let playerTwo = '0';
 let counter = 0;
-let usedCells = [];
 let playerOneWins = 0;
 let playerTwoWins = 0;
 let draws = 0;
+let usedCells = [];
 let playerOneChoices = [];
 let playerTwoChoices = [];
 const playerWinCombo = [
@@ -31,13 +31,18 @@ const initialiseGame = function () {
   playerTwoChoices = [];
   $('#game, .duringGame').css({opacity:0,visibility:'visible'}).animate({opacity:1.0}, 2000);
   $('#gamesDrawn').css({opacity:0,visibility:'visible'}).animate({opacity:1.0}, 2000);
-  $('#startButton').text('Click Here to Restart');
+  $('.startButton').text('Click Here to Restart the round');
 }
 
-$('#startButton').on('click', initialiseGame)
+$('.startButton').on('click', initialiseGame)
 //
 
-// THIS IS OFR THE 0 AND X TURNS.
+//should i have two functions for start and restart. Dividing the above?
+//means I can have less popups.
+
+// PRETTY MUCH ENTIRE GAME.
+
+//THE BELOW IS FOR THE TURN BASE X OR O
   $('.box').on('click', function (){
     let boxId = $(this).attr('id');
     if (usedCells.includes(boxId)) {
@@ -59,49 +64,73 @@ $('#startButton').on('click', initialiseGame)
       $(this).append(token);// before appending - chck if in used cells
       usedCells.push(boxId);
       counter ++
-  // }
-      // console.log(usedCells);
-      // console.log(playerOneChoices, 'player 1');
-      // console.log(playerTwoChoices, 'player 2');
-      let result = winningCombo()
+
+// THE BELOW IS CHECKING IF SUBSET ARRAY IS FUNCTION TO BE USED IN WINNING COMBO FUNCTION
+    const checkArraysSubset = function (array1, subsetArray) {
+      console.log(array1);
+      console.log(subsetArray);
+      return subsetArray.every(val => array1.includes(val));
+    }
+
+//WINNING COMBO CHECKS IF ARRAY OF PLAYERS1/2 HAS SAME ARRAY AS SUBSETS OF CHECKARRAYSUBSET FUNCTION
+    const winningCombo = function () {
+      for (var i = 0; i < playerWinCombo.length; i++) {
+          if (checkArraysSubset(playerOneChoices, playerWinCombo[i])) {
+              playerOneWins++;
+              tallyScores()
+              return 'Player 1 Wins';
+          } else if (checkArraysSubset(playerTwoChoices, playerWinCombo[i])) {
+              playerTwoWins++;
+              tallyScores()
+              return 'Player 2 Wins';
+          }
+          }  if (usedCells.length === 9) {
+          draws++;
+          $('.box').empty();
+          usedCells = [];
+          counter = 0;
+          playerOneChoices = [];
+          playerTwoChoices = [];
+          return 'Its a draw!';
+        }  return 'no results yet';
+      };
+
+// CALLING WINNING COMBO - PROVIDING THE WINNING LINES/ALERTS
+    const result = winningCombo()
         if (result !== 'no results yet') {
-          // setTimeout(function(){ location.reload(); }, 2000);
-          setTimeout(function(){ alert(result); }, 200);
+          //IS THERE A WAY TO HIGHLIGHT THE ARRAY THAT HAS WON THE GAME?
+          // setTimeout(function(){ alert(result); }, 200);
           console.log(playerOneWins, playerTwoWins, draws);
           // $('#gamesDrawn').text(`Draws: ${draws}`);
-          $('#leftWins').text(`Player 1 Wins : ${playerOneWins}`)
-          $('#rightWins').text(`Player 2 Wins: ${playerTwoWins}`)
-          $('#gamesDrawn').text(`Draws: ${draws}`)
+          $('#leftWins').html(`Player 1 Wins: <br/> ${playerOneWins}`)
+          $('#rightWins').html(`Player 2 Wins: <br/>${playerTwoWins}`)
+          $('#gamesDrawn').html(`Draws: ${draws}`)
+
       }
-    })
 
-
-const checkArraysSubset = function (array1, subsetArray) {
-  console.log(array1);
-  console.log(subsetArray);
-  return subsetArray.every(val => array1.includes(val));
-}
-
-
-const winningCombo = function () {
-  for (var i = 0; i < playerWinCombo.length; i++) {
-      if (checkArraysSubset(playerOneChoices, playerWinCombo[i])) {
-          playerOneWins++;
-          return 'Player 1 Wins';
-      } else if (checkArraysSubset(playerTwoChoices, playerWinCombo[i])) {
-          playerTwoWins++;
-          return 'Player 2 Wins';
-      }
-    }  if (usedCells.length === 9) {
-      draws++;
-      return 'Its a draw!';
-    }  return 'no results yet';
-  };
 })
 
-//how to get moves back to 0? Could use map + change html to '' using jquery
-//local storage for win counter?
-// divs for animation wins - can use fadeout function
-// with each finish - i want to add to the player 1 or play 2 total.
+    const tallyScores = function (){
+      if (playerOneWins === 5) {
+          playerOneWins = 0;
+          playerTwoWins = 0;
+          draws = 0;
+          alert('congratulations Player 1, you are the first to 5 wins!!!')
+      } else if (playerTwoWins === 5) {
+          playerOneWins = 0;
+          playerTwoWins = 0;
+          draws = 0;
+          alert('Congratulations Player 2, you are the first to 5 wins!!!')
+
+      }   $('.box').empty();
+        usedCells = [];
+        counter = 0;
+        playerOneChoices = [];
+        playerTwoChoices = [];
+    }
+
+
+
+})
+
 // going to provide avatars - --- avatar 1 and avatar 2.
-// do more css make it look nice.

@@ -17,6 +17,11 @@ header {
   padding: 5%;
 }
 
+aside {
+  background-color: white;
+  border: groove #c9c9c9;
+}
+
 #entireGame {
   display: flex;
   flex-direction: row;
@@ -36,8 +41,18 @@ header {
 .side .duringGame {
   visibility: hidden;
   position: absolute;
-  bottom: 14em;
-  font-size: x-large;
+  bottom: 6em;
+  font-size: 3em;
+}
+
+#rightWins {
+  left: 17em;
+  top: 5em;
+}
+
+#leftWins {
+  left: 4em;
+  top: 5em;
 }
 
 #game {
@@ -73,7 +88,11 @@ header {
 }
 
 img {
-  height: 100px;
+  height: 80px;
+}
+
+img:hover {
+  opacity: 0.3;
 }
 
 .box {
@@ -91,7 +110,15 @@ height: 100px;
 width: 100px;
 }
 
-#button {
+.startButton {
   margin-top: 40px;
   margin-bottom: 40px;
+  padding: 5px 2em;
+  font-family: initial;
+  border-width: medium;
+  border: outset;
 }
+
+.startButton:hover {
+  background-color: yellow;
+  border: inset;
