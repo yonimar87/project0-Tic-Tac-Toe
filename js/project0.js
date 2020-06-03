@@ -88,10 +88,12 @@ $(document).ready(function() {
   // PRETTY MUCH ENTIRE GAME.
   const imagePicker1 = function() {
     playerOne = this.outerHTML
+    $('this').addClass('.selectedAvatar');
   }
 
   const imagePicker2 = function() {
     playerTwo = this.outerHTML
+    $('this').addClass('.selectedAvatar');
   }
 
   $('.avatar1').on('click', imagePicker1);
@@ -160,8 +162,8 @@ $(document).ready(function() {
       // setTimeout(function(){ alert(result); }, 200);
       console.log(playerOneWins, playerTwoWins, draws);
       // $('#gamesDrawn').text(`Draws: ${draws}`);
-      $('#leftWins').html(`${inputVal} Wins: <br/> ${playerOneWins}`)
-      $('#rightWins').html(`${inputVal2} Wins: <br/>${playerTwoWins}`)
+      $('#leftWins').html(`${playerOne}<br/> ${inputVal} <br/> Wins: <br/> ${playerOneWins}`)
+      $('#rightWins').html(`${playerTwo}<br/> ${inputVal2} <br/> Wins: <br/>${playerTwoWins}`)
       $('#gamesDrawn').html(`Draws: ${draws}`)
 
     }
@@ -192,4 +194,5 @@ $(document).ready(function() {
 })
 
 //tomorrow - set up the winning Div
-//
+//potentially local storage
+// when avatar is clicked - background

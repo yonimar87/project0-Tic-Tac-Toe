@@ -79,6 +79,11 @@ aside {
   font-size: x-large;
 }
 
+.selectedAvatar {
+  border-style: double;
+  border-color: black;
+}
+
 .winner {
   visibility: hidden;
   position: absolute;
@@ -101,6 +106,7 @@ img:hover {
 .box {
   background-color: #F2F8FD;
   font-size: 60px;
+  padding: 0;
 }
 
 .box:hover {
