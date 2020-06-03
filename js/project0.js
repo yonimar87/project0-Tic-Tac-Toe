@@ -1,11 +1,12 @@
 $(document).ready(function(){
-//
+// al the variables i have
 let playerOne = 'X';
+//so for player counter - on player win condition x++
 let playerTwo = '0';
 let counter = 0;
 let usedCells = [];
-let playerOneChoices = [];
-let playerTwoChoices = [];
+const playerOneChoices = [];
+const playerTwoChoices = [];
 const playerWinCombo = [
   ['00', '01', '02'],
   ['03', '04', '05'],
@@ -20,12 +21,10 @@ const playerWinCombo = [
 // THIS FUNCTiON IS FOR THE ANIMATION WHEN GAME STARTS //
   $('#button').on('click', function() {
     alert('Player 1 to go first');
-    $('.side').css({opacity:1,visibility:'hidden'}).animate({opacity:0.2}, 2000);
-    $('#game').css({opacity:0,visibility:'visible'}).animate({opacity:1.0}, 2000);
-    // let counter = 0;
-    // let ('.box').pop(boxId);
-    // let playerOneChoices = [];
-    // let playerTwoChoices = [];
+    $('.side').css({opacity:1,visibility:'hidden'}).animate({opacity:0.9}, 2000);
+    $('.box').empty(usedCells);
+    $('#game, .duringGame').css({opacity:0,visibility:'visible'}).animate({opacity:1.0}, 2000);
+    // $('duringGame').css({position:'absolute', bottom: '50em' })
   })
 //
 
@@ -45,20 +44,21 @@ const playerWinCombo = [
         token = playerTwo;
         event.target.style.color = "red";
         playerTwoChoices.push(boxId);
-
       }
+
      // if (! usedCells.includes(boxId)) { //Yoni to review why this is not needed.
       $(this).append(token);// before appending - chck if in used cells
       usedCells.push(boxId);
       $('#button').text('Click Here to Restart');
       counter ++
   // }
-      console.log(usedCells);
-      console.log(playerOneChoices, 'player 1');
-      console.log(playerTwoChoices, 'player 2');
+      // console.log(usedCells);
+      // console.log(playerOneChoices, 'player 1');
+      // console.log(playerTwoChoices, 'player 2');
       let result = winningCombo()
         if (result !== 'no results yet') {
           setTimeout(function(){ alert(result); }, 500);
+          setTimeout(function(){ location.reload(); }, 2000);
       }
     })
 
@@ -80,9 +80,12 @@ const winningCombo = function () {
     }  if (usedCells.length === 9) {
       return 'its a draw!';
     } return 'no results yet';
-};
+  };
 })
 
+//how to get moves back to 0? Could use map + change html to '' using jquery
+//local storage for win counter?
+// divs for animation wins - can use fadeout function
 // with each finish - i want to add to the player 1 or play 2 total.
 // going to provide avatars - --- avatar 1 and avatar 2.
 // do more css make it look nice.
