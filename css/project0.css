@@ -48,11 +48,16 @@ aside {
 #rightWins {
   left: 17em;
   top: 5em;
+  padding-left: 60px;
+  max-width: 100px;
+
 }
 
 #leftWins {
   left: 4em;
   top: 5em;
+  padding-left: 60px;
+
 }
 
 #game {
@@ -102,6 +107,13 @@ img:hover {
 
 .box:hover {
   background-color: yellow;
+}
+
+.inputs {
+  position: absolute;
+  left: 35em;
+  color: maroon;
+  font-weight: bold;
 }
 
 td {
