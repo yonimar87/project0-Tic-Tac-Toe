@@ -1,12 +1,14 @@
 $(document).ready(function(){
 // al the variables i have
 let playerOne = 'X';
-//so for player counter - on player win condition x++
 let playerTwo = '0';
 let counter = 0;
 let usedCells = [];
-const playerOneChoices = [];
-const playerTwoChoices = [];
+let playerOneWins = 0;
+let playerTwoWins = 0;
+let draws = 0;
+let playerOneChoices = [];
+let playerTwoChoices = [];
 const playerWinCombo = [
   ['00', '01', '02'],
   ['03', '04', '05'],
@@ -19,13 +21,20 @@ const playerWinCombo = [
 ]
 
 // THIS FUNCTiON IS FOR THE ANIMATION WHEN GAME STARTS //
-  $('#button').on('click', function() {
-    alert('Player 1 to go first');
-    $('.side').css({opacity:1,visibility:'hidden'}).animate({opacity:0.9}, 2000);
-    $('.box').empty(usedCells);
-    $('#game, .duringGame').css({opacity:0,visibility:'visible'}).animate({opacity:1.0}, 2000);
-    // $('duringGame').css({position:'absolute', bottom: '50em' })
-  })
+const initialiseGame = function () {
+  alert('Player 1 to go first');
+  $('.side').css({opacity:1,visibility:'hidden'}).animate({opacity:0.9}, 2000);
+  $('.box').empty();
+  usedCells = [];
+  counter = 0;
+  playerOneChoices = [];
+  playerTwoChoices = [];
+  $('#game, .duringGame').css({opacity:0,visibility:'visible'}).animate({opacity:1.0}, 2000);
+  $('#gamesDrawn').css({opacity:0,visibility:'visible'}).animate({opacity:1.0}, 2000);
+  $('#startButton').text('Click Here to Restart');
+}
+
+$('#startButton').on('click', initialiseGame)
 //
 
 // THIS IS OFR THE 0 AND X TURNS.
@@ -46,10 +55,9 @@ const playerWinCombo = [
         playerTwoChoices.push(boxId);
       }
 
-     // if (! usedCells.includes(boxId)) { //Yoni to review why this is not needed.
+     // if (! usedCells.includes(boxId)) { //  review why this is not needed.
       $(this).append(token);// before appending - chck if in used cells
       usedCells.push(boxId);
-      $('#button').text('Click Here to Restart');
       counter ++
   // }
       // console.log(usedCells);
@@ -57,15 +65,20 @@ const playerWinCombo = [
       // console.log(playerTwoChoices, 'player 2');
       let result = winningCombo()
         if (result !== 'no results yet') {
-          setTimeout(function(){ alert(result); }, 500);
-          setTimeout(function(){ location.reload(); }, 2000);
+          // setTimeout(function(){ location.reload(); }, 2000);
+          setTimeout(function(){ alert(result); }, 200);
+          console.log(playerOneWins, playerTwoWins, draws);
+          // $('#gamesDrawn').text(`Draws: ${draws}`);
+          $('#leftWins').text(`Player 1 Wins : ${playerOneWins}`)
+          $('#rightWins').text(`Player 2 Wins: ${playerTwoWins}`)
+          $('#gamesDrawn').text(`Draws: ${draws}`)
       }
     })
 
 
 const checkArraysSubset = function (array1, subsetArray) {
   console.log(array1);
-  console.log(subsetArray, 'anything');
+  console.log(subsetArray);
   return subsetArray.every(val => array1.includes(val));
 }
 
@@ -73,13 +86,16 @@ const checkArraysSubset = function (array1, subsetArray) {
 const winningCombo = function () {
   for (var i = 0; i < playerWinCombo.length; i++) {
       if (checkArraysSubset(playerOneChoices, playerWinCombo[i])) {
+          playerOneWins++;
           return 'Player 1 Wins';
       } else if (checkArraysSubset(playerTwoChoices, playerWinCombo[i])) {
+          playerTwoWins++;
           return 'Player 2 Wins';
       }
     }  if (usedCells.length === 9) {
-      return 'its a draw!';
-    } return 'no results yet';
+      draws++;
+      return 'Its a draw!';
+    }  return 'no results yet';
   };
 })
 
