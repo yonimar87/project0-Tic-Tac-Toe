@@ -50,14 +50,12 @@ aside {
   top: 5em;
   padding-left: 60px;
   max-width: 100px;
-
 }
 
 #leftWins {
   left: 4em;
   top: 5em;
   padding-left: 60px;
-
 }
 
 #game {
@@ -117,9 +115,9 @@ img:hover {
 }
 
 td {
-border: 1px solid black;
-height: 100px;
-width: 100px;
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
 }
 
 .startButton {
