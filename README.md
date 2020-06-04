@@ -4,7 +4,7 @@
 This was quite an interesting project. It was pretty great to see how many different ways people can code this game and obviously the different CSS and JavaScript functionalities.
 
 To access the game please visit the following link:
-https://yonimar87.github.io/project0-Tic-Tac-Toe/A
+https://yonimar87.github.io/project0-Tic-Tac-Toe/
 
 To complete the game the following languages were used:
 
@@ -13,7 +13,7 @@ To complete the game the following languages were used:
 * JavaScript
 * jQuery
 
-The way I approached the project was to initially build an HTML and CSS attributes to ensure I have a working table to be able to implement the actual game onto. Once this was esablished I started with JavaScript and jquery
+The way I approached the project was to initially build an HTML and CSS attributes to ensure I have a working table to be able to implement the actual game onto. Once this was established I started with JavaScript and jQuery
 
 The plan was to come up with variables and then the functions that will be using them. I have a couple of global functions and variables, while the rest of the functions are all within the working one.
 

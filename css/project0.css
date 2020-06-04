@@ -151,7 +151,8 @@ img:hover {
 }
 
 .box {
-  background-color: #F2F8FD;
+  background-image: url(../mariobox.png);
+  background-size: contain;
   padding: 0;
 }
 

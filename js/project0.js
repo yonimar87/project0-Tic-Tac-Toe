@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // al the variables i have
-  let playerOne = `<img class='avatar1' id="xDefault" src="X.jpg" alt="X">`
+  let playerOne = `<img class='avatar1' id="xDefault" src="x.png" alt="X">`
   let playerTwo = `<img class='avatar2' id="circleDefault" src="O.png" alt="0">`
   let counter = 0;
   let playerOneWins = 0;
@@ -44,38 +44,14 @@ let span = $('.close');
     getInputValue();
     alert(`${inputVal} goes first`);
 
-    $('.side').css({
-      opacity: 1,
-      visibility: 'hidden'
-    }).animate({
-      opacity: 0.9
-    }, 2000);
-
-    $('.inputs').css({
-      opacity: 1,
-      visibility: 'hidden'
-    }).animate({
-      opacity: 0.9
-    }, 2000);
+    $('.side').css({opacity: 1,visibility: 'hidden'}).animate({opacity: 0.9}, 2000);
+    $('.inputs').css({opacity: 1,visibility: 'hidden'}).animate({opacity: 0.9}, 2000);
 
     refreshGame()
 
     $('#mariotheme')[0].play();
-
-    $('#game, .duringGame').css({
-      opacity: 0,
-      visibility: 'visible'
-    }).animate({
-      opacity: 1.0
-    }, 2000);
-
-    $('#gamesDrawn').css({
-      opacity: 0,
-      visibility: 'visible'
-    }).animate({
-      opacity: 1.0
-    }, 2000);
-
+    $('#game, .duringGame').css({opacity: 0,visibility: 'visible'}).animate({opacity: 1.0}, 2000);
+    $('#gamesDrawn').css({opacity: 0,visibility: 'visible'}).animate({opacity: 1.0}, 2000);
     $('.startButton').text('Click Here to Restart the round');
   }
 
@@ -144,7 +120,7 @@ let span = $('.close');
 
 
 
-    // CALLING WINNING COMBO - PROVIDING INFO FOR DURING THE GAME. THE SIDES
+    // - PROVIDING INFO FOR DURING THE GAME. THE SIDES
     const result = winningCombo()
     if (result !== 'no results yet') {
       console.log(playerOneWins, playerTwoWins, draws);
