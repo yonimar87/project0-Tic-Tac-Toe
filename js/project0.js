@@ -21,6 +21,8 @@ $(document).ready(function() {
     ['00', '04', '08'],
     ['02', '04', '06']
   ]
+let modal = $('#myModal');
+let span = $('.close');
 
   const refreshGame = function (){
     $('.box').empty();
@@ -87,12 +89,10 @@ $(document).ready(function() {
   //this is to make sure that the image i choose is then added to my sides for when the game is played
   const imagePicker1 = function() {
     playerOne = this.outerHTML
-    // $(playerOne).toggleClass('.selectedAvatar');
   }
 
   const imagePicker2 = function() {
     playerTwo = this.outerHTML
-    // $(playerTwo).toggleClass('.selectedAvatar');
   }
 
   $('.avatar1').on('click', imagePicker1);
@@ -107,12 +107,10 @@ $(document).ready(function() {
     let token = '';
     if (counter % 2 === 0) {
       token = playerOne;
-      event.target.style.color = "olive";
       playerOneChoices.push(boxId);
 
     } else {
       token = playerTwo;
-      event.target.style.color = "red";
       playerTwoChoices.push(boxId);
     }
 
@@ -124,8 +122,6 @@ $(document).ready(function() {
 
     // THE BELOW IS CHECKING IF SUBSET ARRAY IS FUNCTION TO BE USED IN WINNING COMBO FUNCTION
     const checkArraysSubset = function(array1, subsetArray) {
-      console.log(array1);
-      console.log(subsetArray);
       return subsetArray.every(val => array1.includes(val));
     }
 
@@ -156,12 +152,9 @@ $(document).ready(function() {
     // CALLING WINNING COMBO - PROVIDING THE WINNING LINES/ALERTS
     const result = winningCombo()
     if (result !== 'no results yet') {
-      //IS THERE A WAY TO HIGHLIGHT THE ARRAY THAT HAS WON THE GAME?
-      // setTimeout(function(){ alert(result); }, 200);
       console.log(playerOneWins, playerTwoWins, draws);
-      // $('#gamesDrawn').text(`Draws: ${draws}`);
-      $('#leftWins').html(`${playerOne}<br/> ${inputVal} <br/> Wins: <br/> ${playerOneWins}`)
-      $('#rightWins').html(`${playerTwo}<br/> ${inputVal2} <br/> Wins: <br/>${playerTwoWins}`)
+      $('#leftWins').html(`${playerOne} </br> ${inputVal} Wins:  ${playerOneWins}`)
+      $('#rightWins').html(`${playerTwo}${inputVal2}  Wins:${playerTwoWins}`)
       $('#gamesDrawn').html(`Draws: ${draws}`)
 
     }
@@ -174,19 +167,23 @@ $(document).ready(function() {
       playerOneWins = 0;
       playerTwoWins = 0;
       draws = 0;
-      alert(`congratulations ${inputVal}, you are the first to 5 wins!!!`)
+      modal.css('display', 'block')
+      $('#winnermessage').html(`Congratulations ${inputVal}, you are the first to 5 wins!!!`);   // alert(`congratulations ${inputVal}, you are the first to 5 wins!!!`)
+      refreshGame()
     } else if (playerTwoWins === 5) {
       playerOneWins = 0;
       playerTwoWins = 0;
       draws = 0;
       alert(`Congratulations ${inputVal2}, you are the first to 5 wins!!!`)
 
+
+
     }
     refreshGame();
   }
+  $('#close').on('click', function() {
+    modal.css('display', 'none')
+  })
+
 
 })
-
-//tomorrow - set up the winning Div
-//potentially local storage
-// when avatar is clicked - background

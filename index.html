@@ -22,12 +22,11 @@
 
       <aside class="side">
         <h3 id='player1'>Player 1: Choose your Avatar</h3>
+        <p class="duringGame" id="leftWins"></p>
         <img class='avatar1' id="xDefault" src="X.jpg" alt="X">1
         <img class='avatar1' id="mario" src="mario.jpeg" alt="Mario">Mario
         <img class='avatar1' id="luigi" src="luigi.jpeg" alt="Luigi">Luigi
         <img class='avatar1' id="bowser" src="peach.jpg" alt="Princess Peach">Peach
-        <p class="duringGame" id="leftWins">Player One <br>Wins:</p>
-
       </aside>
 
       <div id='gamesDrawn'>Draws:</div>
@@ -61,20 +60,25 @@
         </table>
       </section>
 
-      <div class="winner">
-        <h1>Congratulations! <span id="wins">&nbsp</span></h1>
-        <button type="button" name="button">Next Game</button>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span id='close' class="close">&times;</span>
+          <p id="winnermessage"></p>
+        </div>
+
       </div>
+
 
       <aside class="side">
         <h3 id='player2'>Player 2: Choose your Avatar</h3>
+        <p class="duringGame" id="rightWins"></p>
         <img class='avatar2' id="circleDefault" src="O.png" alt="0">1
         <img class='avatar2' id="Bowser" src="bowser.jpg" alt="Bowser">Bowser
         <img class='avatar2' id="Waluigi" src="waluigi.jpg" alt="waluigi">Waluigi
         <img class='avatar2' id="Wario" src="wario.jpg" alt="Wario">Wario
-        <p class="duringGame" id="rightWins">Player Two <br>Wins:</p>
       </aside>
     </div>
+
     <button type="button" name="button" class="startButton"> Click Here to Start the Game</button>
     <audio id="mariotheme" src="SMB-Theme.mp3"></audio>
   </div>

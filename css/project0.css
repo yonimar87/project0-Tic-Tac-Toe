@@ -5,16 +5,21 @@
 }
 
 .container {
-  max-width: 960px;
-  background-color: #c9c9c9;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background-image: url(../background.jpg);
-  background-size: cover;
+    max-width: 960px;
+    background-color: #c9c9c9;
+    position: absolute;
+    height: 960px;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    display: flex;
+    margin-top: -480px;
+    margin-left: -480px;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-image: url(../background.jpg);
+    background-size: cover;
 }
-
 
 h1 {
   color: white;
@@ -23,9 +28,6 @@ header {
   padding: 5%;
 }
 
-/* aside {
-  background-color: white;
-} */
 
 #entireGame {
   display: flex;
@@ -45,21 +47,25 @@ header {
 
 .side .duringGame {
   visibility: hidden;
-  position: absolute;
+  position: relative;
   bottom: 6em;
   font-size: 3em;
 }
 
+#side2 {
+  right: 10em;
+}
+
 #rightWins {
-  left: 17em;
-  top: 5em;
+  right: 3em;
+  top: 2em;
   padding-left: 60px;
   max-width: 100px;
 }
 
 #leftWins {
-  left: 1em;
-  top: 5em;
+  left: 25%;
+  top: 2em;
   padding-left: 60px;
 }
 
@@ -85,15 +91,51 @@ header {
   font-size: x-large;
 }
 
-.winner {
-  visibility: hidden;
+.modals {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal {
+  display: none;
   position: absolute;
-  right: 480px;
-  top: 300px;
-  background-color: #c9c9c9;
-  border-style: dotted;
-  border-color: red;
-  padding: 2em;
+  width: 960px;
+  height: 50px;
+  left: 50%;
+  top: 50%;
+  margin-left: -480px;
+  margin-top: -25px;
+  overflow: auto;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #ADD8E6;
+  padding: 20px;
+  border: 1px solid #888 20%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 img {
@@ -145,8 +187,4 @@ td {
 .startButton:hover {
   background-color: yellow;
   border: inset;
-}
-
-.selectedAvatar {
-  border-style: double;
 }
