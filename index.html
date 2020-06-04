@@ -15,17 +15,17 @@
 
   <div class="container">
     <header>
-      <h1 class="animate__animated animate__bounce">Welcome to Yoni's Tic Tac Toe</h1>
+      <h1 class="animate__animated animate__bounce">Welcome to Mario's Tic Tac Toe</h1>
     </header>
 
     <div id="entireGame">
 
       <aside class="side">
         <h3 id='player1'>Player 1: Choose your Avatar</h3>
-        <h3 class="default">Default: X</h3>
-        <img class='avatar1' id="mario" src="mario.jpeg" alt="Mario">1
-        <img class='avatar1' id="luigi" src="luigi.jpeg" alt="Luigi">2
-        <img class='avatar1' id="bowser" src="bowser.jpg" alt="Bowser">3
+        <img class='avatar1' id="xDefault" src="X.jpg" alt="X">1
+        <img class='avatar1' id="mario" src="mario.jpeg" alt="Mario">Mario
+        <img class='avatar1' id="luigi" src="luigi.jpeg" alt="Luigi">Luigi
+        <img class='avatar1' id="bowser" src="peach.jpg" alt="Princess Peach">Peach
         <p class="duringGame" id="leftWins">Player One <br>Wins:</p>
 
       </aside>
@@ -35,27 +35,28 @@
       <div class="inputs">
         <p>Please Enter Your Names
           <br>
-          <br> <input id="player1Name" type="text" placeholder="Player 1">
+          <br> <input id="player1Name" type="text"  value="Player One">
           <br>
-          <br> <input id="player2Name" type="test" placeholder="Player 2" </p>
+          <br> <input id="player2Name" type="text"  value="Player Two">
+       </p>
       </div>
 
       <section id="game">
         <table>
           <tr>
-            <td id="00" class="box"></td>
-            <td id="01" class="box"></td>
-            <td id="02" class="box"></td>
+            <td id="00" class="box">&nbsp</td>
+            <td id="01" class="box">&nbsp</td>
+            <td id="02" class="box">&nbsp</td>
           </tr>
           <tr>
-            <td id="03" class="box"></td>
-            <td id="04" class="box"></td>
-            <td id="05" class="box"></td>
+            <td id="03" class="box">&nbsp</td>
+            <td id="04" class="box">&nbsp</td>
+            <td id="05" class="box">&nbsp</td>
           </tr>
           <tr>
-            <td id="06" class="box"></td>
-            <td id="07" class="box"></td>
-            <td id="08" class="box"></td>
+            <td id="06" class="box">&nbsp</td>
+            <td id="07" class="box">&nbsp</td>
+            <td id="08" class="box">&nbsp</td>
           </tr>
         </table>
       </section>
@@ -67,17 +68,17 @@
 
       <aside class="side">
         <h3 id='player2'>Player 2: Choose your Avatar</h3>
-        <h3 class="default">Default: 0</h3>
-        <img class='avatar2' id="kodama" src="kodama.jpeg" alt="Kodama">1
-        <img class='avatar2' id="noface" src="noface.jpeg" alt="No Face">2
-        <img class='avatar2' id="irongiant" src="irongiant.jpeg" alt="Iron Giant">3
+        <img class='avatar2' id="circleDefault" src="O.png" alt="0">1
+        <img class='avatar2' id="Bowser" src="bowser.jpg" alt="Bowser">Bowser
+        <img class='avatar2' id="Waluigi" src="waluigi.jpg" alt="waluigi">Waluigi
+        <img class='avatar2' id="Wario" src="wario.jpg" alt="Wario">Wario
         <p class="duringGame" id="rightWins">Player Two <br>Wins:</p>
       </aside>
     </div>
-    <button type="button" name="button" class="startButton">Click Here to Start the Game</button>
+    <button type="button" name="button" class="startButton"> Click Here to Start the Game</button>
+    <audio id="mariotheme" src="SMB-Theme.mp3"></audio>
   </div>
 
-  <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
   <script src="js/jquery-1.js" type="text/javascript"></script>
   <script src="js/project0.js" charset="utf-8"></script>
 </body>

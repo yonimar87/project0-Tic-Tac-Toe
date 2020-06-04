@@ -11,16 +11,21 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-image: url(../background.jpg);
+  background-size: cover;
 }
 
+
+h1 {
+  color: white;
+}
 header {
   padding: 5%;
 }
 
-aside {
+/* aside {
   background-color: white;
-  border: groove #c9c9c9;
-}
+} */
 
 #entireGame {
   display: flex;
@@ -53,7 +58,7 @@ aside {
 }
 
 #leftWins {
-  left: 4em;
+  left: 1em;
   top: 5em;
   padding-left: 60px;
 }
@@ -65,6 +70,7 @@ aside {
   height: 38%;
   display: table-cell;
   visibility: hidden;
+  left: -4em;
 }
 
 .default {
@@ -77,11 +83,6 @@ aside {
   right: 47%;
   visibility: hidden;
   font-size: x-large;
-}
-
-.selectedAvatar {
-  border-style: double;
-  border-color: black;
 }
 
 .winner {
@@ -97,6 +98,10 @@ aside {
 
 img {
   height: 80px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border-radius: 25%;
 }
 
 img:hover {
@@ -105,7 +110,6 @@ img:hover {
 
 .box {
   background-color: #F2F8FD;
-  font-size: 60px;
   padding: 0;
 }
 
@@ -114,10 +118,11 @@ img:hover {
 }
 
 .inputs {
-  position: absolute;
-  left: 35em;
+  position: relative;
   color: maroon;
   font-weight: bold;
+  left: 12em;
+  top: -10em;
 }
 
 td {
@@ -131,10 +136,17 @@ td {
   margin-bottom: 40px;
   padding: 5px 2em;
   font-family: initial;
+  position: relative;
   border-width: medium;
   border: outset;
+  bottom: 10em;
 }
 
 .startButton:hover {
   background-color: yellow;
   border: inset;
+}
+
+.selectedAvatar {
+  border-style: double;
+}
