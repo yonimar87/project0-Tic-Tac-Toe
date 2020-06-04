@@ -57,6 +57,7 @@ let span = $('.close');
     }).animate({
       opacity: 0.9
     }, 2000);
+
     refreshGame()
 
     $('#mariotheme')[0].play();
@@ -81,22 +82,18 @@ let span = $('.close');
   $('.startButton').on('click', initialiseGame)
   //
 
-  //should i have two functions for start and restart. Dividing the above?
-  //means I can have less popups.
-
   // PRETTY MUCH ENTIRE GAME.
 
   //this is to make sure that the image i choose is then added to my sides for when the game is played
   const imagePicker1 = function() {
     playerOne = this.outerHTML
   }
-
   const imagePicker2 = function() {
     playerTwo = this.outerHTML
   }
-
   $('.avatar1').on('click', imagePicker1);
   $('.avatar2').on('click', imagePicker2);
+
 
   //THE BELOW IS FOR THE TURN BASE X OR O
   $('.box').on('click', function() {
@@ -113,9 +110,7 @@ let span = $('.close');
       token = playerTwo;
       playerTwoChoices.push(boxId);
     }
-
-    // if (! usedCells.includes(boxId)) { //  review why this is not needed.
-    $(this).append(token); // before appending - chck if in used cells
+    $(this).append(token);
     usedCells.push(boxId);
     counter++
 
@@ -149,7 +144,7 @@ let span = $('.close');
 
 
 
-    // CALLING WINNING COMBO - PROVIDING THE WINNING LINES/ALERTS
+    // CALLING WINNING COMBO - PROVIDING INFO FOR DURING THE GAME. THE SIDES
     const result = winningCombo()
     if (result !== 'no results yet') {
       console.log(playerOneWins, playerTwoWins, draws);
@@ -161,7 +156,7 @@ let span = $('.close');
 
   })
 
-//function for tallying the scores.
+//function for tallying the scores. + also refreshing the end game + congrats who wins!
   const tallyScores = function() {
     if (playerOneWins === 5) {
       playerOneWins = 0;
@@ -174,16 +169,12 @@ let span = $('.close');
       playerOneWins = 0;
       playerTwoWins = 0;
       draws = 0;
-      alert(`Congratulations ${inputVal2}, you are the first to 5 wins!!!`)
-
-
-
+      modal.css('display', 'block')
+      $('#winnermessage').html(`Congratulations ${inputVal2}, you are the first to 5 wins!!!`);
     }
     refreshGame();
   }
   $('#close').on('click', function() {
     modal.css('display', 'none')
   })
-
-
 })
